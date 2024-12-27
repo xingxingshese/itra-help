@@ -1,0 +1,48 @@
+<view class="container">
+  <navigation-bar title="RUNNER 列表" background="#FFF"></navigation-bar>
+  <scroll-view 
+    scroll-y 
+    class="result-list"
+    bindscrolltolower="loadMoreRunners"
+    lower-threshold="50"
+  >
+    <view class="result-item" wx:for="{{results}}" wx:key="runnerId"   bindtap="onRacesClick" data-runner-id="{{item.runnerId}}">
+      <view class="runner-header">
+        <image class="profile-pic" src="https://itra.run{{item.profilePic}}" mode="aspectFill"></image>
+        <view class="runner-info">
+          <view class="name">{{item.firstName}} {{item.lastName}}</view>
+          <view class="nationality">
+            <image class="flag" src="https://itra.run{{item.code}}" mode="aspectFit"></image>
+            {{item.nationality}}
+          </view>
+        </view>
+      </view>
+      
+      <view class="details">
+        <view class="detail-item">
+          <text class="label">性别：</text>
+          <text class="label-value">{{item.gender === 'H' ? '男' : '女'}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">年龄组：</text>
+          <text class="label-value">{{item.ageGroup}}</text>
+        </view>
+        <view class="detail-item">
+          <text class="label">表现分：</text>
+          <text class="label-value">{{item.pi}}</text>
+        </view>
+      </view>
+
+      <view class="recent-races">
+        <view class="label">近期比赛：</view>
+        <view class="races">{{item.recentRaces}}</view>
+      </view>
+    </view>
+
+<view class="loading" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text>加载中...</text>
+  </view>
+  <view class="no-more" wx:if="{{noMore}}">没有更多数据了</view>
+  </scroll-view>
+</view>

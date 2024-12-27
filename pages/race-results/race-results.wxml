@@ -1,0 +1,36 @@
+<view class="container">
+  <navigation-bar title="比赛结果" background="#FFF"></navigation-bar>
+  <view class="race-info">
+    <view class="race-name">{{raceName}}</view>
+    <view class="race-category">{{raceCategory}} - {{raceYear}}</view>
+  </view>
+
+  <view class="search-box">
+    <input type="text" placeholder="搜索选手" bindinput="onSearch" class="search-input"/>
+  </view>
+
+  <view class="results-table">
+    <view class="table-header">
+      <view class="th" style="flex: 0 0 15%;">编号</view>
+      <view class="th runner" style="flex: 0 0 55%;">选手</view>
+      <view class="th" style="flex: 0 0 30%;">完赛时间</view>
+    </view>
+    <scroll-view scroll-y class="table-body" show-scrollbar="true" enhanced="true">
+      <view class="tr" wx:for="{{filteredResults}}" wx:key="runnerNo">
+        <view class="td" style="flex: 0 0 15%;">{{item.rank}}</view>
+        <view class="td runner" style="flex: 0 0 55%;">
+          <image src="{{item.avatarUrl}}" style="width: 3em; height: 3em; margin: 0.10em; border-radius: 50%;" />
+          <text class="runner-name">{{item.runner}}</text>
+        </view>
+        <view class="td" style="flex: 0 0 30%;">{{item.time}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="loading-mask" wx:if="{{loading}}">
+    <view class="loading-container">
+      <view class="loading-spinner"></view>
+      <view class="loading-text">加载中...</view>
+    </view>
+  </view>
+</view> 

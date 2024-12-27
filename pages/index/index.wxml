@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<navigation-bar title="我的表现分查询助手" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <image class="logo" src="../../data/images/header.png" mode="widthFix"></image>
+    <view class="input-group">
+      <input class="input-item" placeholder="请输入姓" bindinput="onLastNameInput"/>
+      <input class="input-item" placeholder="请输入名" bindinput="onFirstNameInput"/>
+    </view>
+    <button class="search-btn" disabled="{{!canSearch}}" bindtap="onSearch">查询</button>
+  </view>
+</scroll-view>

@@ -1,0 +1,67 @@
+<view class="container">
+  
+  <navigation-bar title="最近三场比赛列表" background="#FFF"></navigation-bar>
+  <view class="runner-info {{isFixed ? 'fixed' : ''}}">
+    <view class="runner-card">
+      <image class="avatar" src="https://itra.run{{profilePic}}" mode="aspectFill"></image>
+      <view class="info">
+        <view class="name">{{firstName}} {{lastName}}</view>
+        <view class="pi">表现分: {{pi}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="placeholder" wx:if="{{isFixed}}"></view>
+
+  <view class="race-list">
+  <scroll-view scroll-y class="table-body" show-scrollbar="true" enhanced="true" bindscrolltolower="loadMoreRaces">
+    <view class="race-item" wx:for="{{raceList}}" wx:key="index" bindtap="onRaceClick" data-race="{{item}}">
+      <view class="race-header">
+        <view class="race-name">{{item.name}}</view>
+        <view class="race-date">{{item.date}}</view>
+      </view>
+      
+      <view class="race-details">
+        <view class="detail-row">
+          <view class="detail-item">
+            <text class="label">距离：</text>
+            <text>{{item.distance}}km</text>
+          </view>
+          <view class="detail-item">
+            <text class="label">爬升：</text>
+            <text>{{item.elevationGain}}m</text>
+          </view>
+        </view>
+        
+        <view class="detail-row">
+          <view class="detail-item">
+            <text class="label">完赛时间：</text>
+            <text>{{item.time}}</text>
+          </view>
+          <view class="detail-item">
+            <text class="label">总排名：</text>
+            <text>{{item.ranking}}/{{item.runnerCount}}</text>
+          </view>
+        </view>
+        
+        <view class="detail-row">
+          <view class="detail-item">
+            <text class="label">性别排名：</text>
+            <text>{{item.genderRanking}}/{{item.genderRunnerCount}}</text>
+          </view>
+          <view class="detail-item">
+           <text class="label">预估表现分：</text>
+            <text>{{item.score}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    </scroll-view>
+  </view>
+  
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text>加载中...</text>
+  </view>
+  <view class="no-more" wx:if="{{noMore}}">没有更多数据了</view>
+</view> 
