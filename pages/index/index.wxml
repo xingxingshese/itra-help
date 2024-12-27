@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<navigation-bar title="我的表现分查询助手" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<navigation-bar title="我的越野赛" back="{{false}}" color="black" background="#FFF"></navigation-bar>
 
 
 <scroll-view class="scrollarea" scroll-y type="list">

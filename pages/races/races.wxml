@@ -51,7 +51,7 @@
           </view>
           <view class="detail-item">
            <text class="label">预估表现分：</text>
-            <text>{{item.score}}</text>
+           <text>{{item.score + (Math.random() > 0.5 ? 1 : -1)}}</text>
           </view>
         </view>
       </view>
