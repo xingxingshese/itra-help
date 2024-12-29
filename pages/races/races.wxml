@@ -17,8 +17,9 @@
   <scroll-view scroll-y class="table-body" show-scrollbar="true" enhanced="true" bindscrolltolower="loadMoreRaces">
     <view class="race-item" wx:for="{{raceList}}" wx:key="index" bindtap="onRaceClick" data-race="{{item}}">
       <view class="race-header">
-        <view class="race-name">{{item.name}}</view>
         <view class="race-date">{{item.date}}</view>
+        <view class="race-name">{{item.name}}</view>
+       
       </view>
       
       <view class="race-details">
