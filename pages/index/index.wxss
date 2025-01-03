@@ -1,21 +1,18 @@
-/**index.wxss**/
-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding-top: 44px;
-}
+@import "../../styles/common.wxss";
 
 .scrollarea {
   flex: 1;
   overflow-y: hidden;
 }
+page {
+  padding-top: 44px;
+}
 
 .container {
-  padding: 20px;
+  /* padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
   justify-content: flex-start;
 }
 
