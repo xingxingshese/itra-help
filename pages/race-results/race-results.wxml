@@ -16,13 +16,15 @@
       <view class="th" style="flex: 0 0 30%;">完赛时间</view>
     </view>
     <scroll-view scroll-y class="table-body" show-scrollbar="true" enhanced="true">
-      <view class="tr" wx:for="{{filteredResults}}" wx:key="runnerNo">
+    
+      <view class="tr" wx:for="{{filteredResults}}" wx:key="runnerNo" bindtap="onRaceClick" data-item="{{item}}">
         <view class="td" style="flex: 0 0 15%;">{{item.rank}}</view>
         <view class="td runner" style="flex: 0 0 55%;">
           <image src="{{item.avatarUrl}}" style="width: 3em; height: 3em; margin: 0.10em; border-radius: 50%;" />
           <text class="runner-name">{{item.runner}}</text>
         </view>
         <view class="td" style="flex: 0 0 30%;">{{item.time}}</view>
+        
       </view>
     </scroll-view>
   </view>

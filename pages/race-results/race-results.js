@@ -112,7 +112,13 @@ Page({
         // 提取头像URL
         const imgMatch = row.match(/src="([^"]+)"\s+style="width: 3em/);
         const avatarUrl = imgMatch ? imgMatch[1] : '';
-      
+        // 提取选手ID
+        const runnerIdMatch = row.match(/\/RunnerSpace\/[^\/]+\/(\d+)/);
+        const runnerId = runnerIdMatch ? runnerIdMatch[1] : '';
+
+        const runnerUrlMatch = row.match(/\/RunnerSpace\/([^\/]+)\/(\d+)/);
+        const runnerUrl = runnerUrlMatch ? runnerUrlMatch[0] : '';
+        
         // 提取选手姓名
         const nameMatch = row.match(/<a[^>]+>\s*(?:<img[^>]+>\s*)?([^<]+)\s*<\/a>/);
         const runnerName = nameMatch ? nameMatch[1].trim() : '';
@@ -131,7 +137,9 @@ Page({
             rank:rank,
             runner: runnerDecodedName,
             avatarUrl: 'https://itra.run'+avatarUrl,
-            time: time
+            time: time,
+            runnerId: runnerId,
+            runnerUrl: 'https://itra.run'+runnerUrl
           });
         }
       }
@@ -242,9 +250,17 @@ Page({
       }
     }
     return result;
+  },
+
+  onRaceClick: function(e) {
+    const item = e.currentTarget.dataset.item;  // 获取传递的数据
+    console.log('clicked item:', item);
+    if (item && item.runnerUrl) {
+      wx.navigateTo({
+        url: `/pages/races/races?runnerUrl=${encodeURIComponent(item.runnerUrl)}`
+      });
+    }
   }
-
-
 
 
 }); 

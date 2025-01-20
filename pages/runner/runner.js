@@ -1,11 +1,12 @@
 Page({
   data: {
+    qname: '',
     lastName: '',
     firstName: '',
     canSearch: false,
     results: [],
-    pageNumber: 1,
-    pageSize: 5,
+    start: 1,
+    count: 5,
     loading: false,
     noMore: false,
     isLoadingMore: false,
@@ -13,13 +14,13 @@ Page({
   },
 
   onLoad: function(options) {
-    if (options.data) {
-      const data = JSON.parse(decodeURIComponent(options.data));
+    if (options.qName) {
+      console.log(decodeURIComponent(options.qName));
       this.setData({
-        results: data.results,
-        noMore: data.results.length < this.data.pageSize
+        qname: decodeURIComponent(options.qName)
       });
     }
+    this.loadMoreRunners();
   },
 
     // 监听页面滚动
@@ -43,7 +44,7 @@ Page({
 
     this.setData({ loading: true });
 
-    const name = `${this.data.lastName} ${this.data.firstName}`;
+    console.log(this.data.qname);
     const echoToken = Math.random().toString();
 
     wx.request({
@@ -53,9 +54,9 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: {
-        name: name,
-        start: this.data.pageNumber,
-        count: this.data.pageSize,
+        name: this.data.qname,
+        start: this.data.start,
+        count: this.data.count,
         echoToken: echoToken
       },
       success: (res) => {
@@ -63,9 +64,9 @@ Page({
           const newResults = res.data.results;
           this.setData({
             results: [...this.data.results, ...newResults],
-            pageNumber: this.data.pageNumber + 1,
-            // noMore: newResults.length < this.data.pageSize
-            noMore: true
+            start: this.data.start + this.data.count,
+            noMore: newResults.length < this.data.count
+            // noMore: true
           });
         } else {
           wx.showToast({

@@ -3,9 +3,9 @@
   <navigation-bar title="最近三场比赛列表" background="#FFF"></navigation-bar>
   <view class="runner-info {{isFixed ? 'fixed' : ''}}">
     <view class="runner-card">
-      <image class="avatar" src="https://itra.run{{profilePic}}" mode="aspectFill"></image>
+      <image class="avatar" src="https://itra.run{{avatarUrl}}" mode="aspectFill"></image>
       <view class="info">
-        <view class="name">{{firstName}} {{lastName}}</view>
+        <view class="name">{{runner}}</view>
         <view class="pi">表现分: {{pi}}</view>
       </view>
     </view>
