@@ -15,10 +15,10 @@
 
   <view class="race-list">
   <scroll-view scroll-y class="table-body" show-scrollbar="true" enhanced="true" bindscrolltolower="loadMoreRaces">
-    <view class="race-item" wx:for="{{raceList}}" wx:key="index" bindtap="onRaceClick" data-race="{{item}}">
+    <view class="race-item" wx:for="{{raceList[0]}}" wx:key="index" bindtap="onRaceClick" data-race="{{item}}">
       <view class="race-header">
-        <view class="race-date">{{item.date}}</view>
-        <view class="race-name">{{item.name}}</view>
+        <view class="race-date">{{item.Date}}</view>
+        <view class="race-name">{{item.Name}}</view>
        
       </view>
       
@@ -26,33 +26,33 @@
         <view class="detail-row">
           <view class="detail-item">
             <text class="label">距离：</text>
-            <text>{{item.distance}}km</text>
+            <text>{{item.Distance}}km</text>
           </view>
           <view class="detail-item">
             <text class="label">爬升：</text>
-            <text>{{item.elevationGain}}m</text>
+            <text>{{item.ElevationGain}}m</text>
           </view>
         </view>
         
         <view class="detail-row">
           <view class="detail-item">
             <text class="label">完赛时间：</text>
-            <text>{{item.time}}</text>
+            <text>{{item.Time}}</text>
           </view>
           <view class="detail-item">
             <text class="label">总排名：</text>
-            <text>{{item.ranking}}/{{item.runnerCount}}</text>
+            <text>{{item.Rranking}}/{{item.RunnerCount}}</text>
           </view>
         </view>
         
         <view class="detail-row">
           <view class="detail-item">
             <text class="label">性别排名：</text>
-            <text>{{item.genderRanking}}/{{item.genderRunnerCount}}</text>
+            <text>{{item.GenderRanking}}/{{item.GenderRunnerCount}}</text>
           </view>
           <view class="detail-item">
            <text class="label">预估表现分：</text>
-           <text>{{item.score && item.score !== 0 ? (item.score + (Math.random() > 0.5 ? 1 : -1)) : ''}}</text>
+           <text>{{item.Score && item.Score !== 0 ? (item.Score + (Math.random() > 0.5 ? 1 : -1)) : ''}}</text>
           </view>
         </view>
       </view>

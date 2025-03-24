@@ -6,14 +6,14 @@
     bindscrolltolower="loadMoreRunners"
     lower-threshold="50"
   >
-    <view class="result-item" wx:for="{{results}}" wx:key="runnerId"   bindtap="onRacesClick" data-runner-id="{{item.runnerId}}">
+    <view class="result-item" wx:for="{{results}}" wx:key="RunnerId"   bindtap="onRacesClick" data-runner-id="{{item.RunnerId}}">
       <view class="runner-header">
-        <image class="profile-pic" src="https://itra.run{{item.profilePic}}" mode="aspectFill"></image>
+        <image class="profile-pic" src="https://itra.run{{item.ProfilePic}}" mode="aspectFill"></image>
         <view class="runner-info">
-          <view class="name">{{item.firstName}} {{item.lastName}}</view>
+          <view class="name">{{item.FirstName}} {{item.LastName}}</view>
           <view class="nationality">
-            <image class="flag" src="https://itra.run{{item.code}}" mode="aspectFit"></image>
-            {{item.nationality}}
+            <image class="flag" src="https://itra.run{{item.Code}}" mode="aspectFit"></image>
+            {{item.Nationality}}
           </view>
         </view>
       </view>
@@ -21,21 +21,21 @@
       <view class="details">
         <view class="detail-item">
           <text class="label">性别：</text>
-          <text class="label-value">{{item.gender === 'H' ? '男' : '女'}}</text>
+          <text class="label-value">{{item.Gender === 'H' ? '男' : '女'}}</text>
         </view>
         <view class="detail-item">
           <text class="label">年龄组：</text>
-          <text class="label-value">{{item.ageGroup}}</text>
+          <text class="label-value">{{item.AgeGroup}}</text>
         </view>
         <view class="detail-item">
           <text class="label">表现分：</text>
-          <text class="label-value">{{item.pi}}</text>
+          <text class="label-value">{{item.Pi}}</text>
         </view>
       </view>
 
       <view class="recent-races">
         <view class="label">近期比赛：</view>
-        <view class="races">{{item.recentRaces}}</view>
+        <view class="races">{{item.RecentRaces}}</view>
       </view>
     </view>
 

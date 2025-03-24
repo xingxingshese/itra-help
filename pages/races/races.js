@@ -98,21 +98,26 @@ Page({
         categoryId: ''
       },
       success: (res) => {
-        if (res.statusCode === 200 )
-          if (res.data.raceResults) {
-            
-          this.setData({
-            raceList: [...this.data.raceList, ...res.data.raceResults],
-            noMore: res.data.raceResults.length < this.data.pageSize
-          });
-        }
+        if (res.statusCode === 200) {
+          const newResults = wx.utils.decryptString(res.data.response1, res.data.response2, res.data.response3);
+        
+          // 将字符串转为json并把key转为小写
+          const jsonResults = JSON.parse(newResults);
+          console.log(jsonResults.RaceResults)
+          if (jsonResults.RaceResults) {
+            this.setData({
+                raceList: [...this.data.raceList, jsonResults.RaceResults],
+                noMore: jsonResults.RaceResults.length < this.data.pageSize
+              });
+            }
+            console.log(this.data);
         // else{
           this.setData({
             noMore: true
           });
         // }
 
-      },
+      }},
       fail: () => {
         wx.showToast({
           title: '加载失败',
@@ -141,10 +146,10 @@ Page({
 
   onRaceClick(e) {
     const race = e.currentTarget.dataset.race;
-    const year = race.date.split('-')[0];
+    const year = race.Date.split('-')[0];
     
     wx.navigateTo({
-      url: `/pages/race-results/race-results?raceName=${encodeURIComponent(race.name)}&category=${race.distanceCategory}&year=${year}&raceYearId=${race.raceYearId}`
+      url: `/pages/race-results/race-results?raceName=${encodeURIComponent(race.Name)}&category=${race.DistanceCategory}&year=${year}&raceYearId=${race.RaceYearId}`
     });
   },
 

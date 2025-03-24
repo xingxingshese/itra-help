@@ -61,9 +61,13 @@ Page({
       },
       success: (res) => {
         if (res.statusCode === 200) {
-          const newResults = res.data.results;
+         
+          const newResults =  wx.utils.decryptString(res.data.response1,res.data.response2,res.data.response3);
+        
+          // 将字符串转为json并把key转为小写
+          const jsonResults = JSON.parse(newResults);
           this.setData({
-            results: [...this.data.results, ...newResults],
+            results: [...this.data.results, ...jsonResults.Results],
             start: this.data.start + this.data.count,
             noMore: newResults.length < this.data.count
             // noMore: true
@@ -89,12 +93,17 @@ Page({
     });
   },
 
+ 
+  
+
   onRacesClick(e) {
     const runnerId = e.currentTarget.dataset.runnerId;
-    const runner = this.data.results.find(item => item.runnerId === runnerId);
+    console.log(runnerId);
+    const runner = this.data.results.find(item => item.RunnerId === runnerId);
+    console.log(runner);
     
     wx.navigateTo({
-      url: `/pages/races/races?runnerId=${runnerId}&firstName=${runner.firstName}&lastName=${runner.lastName}&profilePic=${encodeURIComponent(runner.profilePic)}&pi=${runner.pi}`
+      url: `/pages/races/races?runnerId=${runnerId}&firstName=${runner.FirstName}&lastName=${runner.LastName}&profilePic=${encodeURIComponent(runner.ProfilePic)}&pi=${runner.Pi}`
     });
   }
 });
