@@ -51,8 +51,8 @@
             <text>{{item.GenderRanking}}/{{item.GenderRunnerCount}}</text>
           </view>
           <view class="detail-item">
-           <text class="label">预估表现分：</text>
-           <text>{{item.Score && item.Score !== 0 ? item.Score : ''}}</text>
+           <text class="label">DNF：</text>
+           <text>{{item.DNF}}</text>
           </view>
         </view>
       </view>

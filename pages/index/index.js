@@ -6,6 +6,22 @@ Page({
     canSearch: false
   },
 
+  onLoad: function(options) {
+    
+    
+    const cachedLastName = wx.getStorageSync('lastName'); 
+    const cachedFirstName = wx.getStorageSync('firstName');     
+    console.log("ddddddddddddddddd+",cachedLastName,cachedFirstName) 
+    if (cachedLastName && cachedFirstName) {
+      // 使用缓存数据
+      this.setData({
+        lastName: cachedLastName,
+        firstName: cachedFirstName,
+      });
+      this.checkCanSearch();
+    }
+  },
+
   onLastNameInput(e) {
     const lastName = e.detail.value;
     this.setData({

@@ -6,8 +6,8 @@
   <view class="container">
     <!-- <image class="logo" src="../../data/images/header.png" mode="widthFix"></image> -->
     <view class="input-group">
-      <input class="input-item" placeholder="请输入姓" bindinput="onLastNameInput"/>
-      <input class="input-item" placeholder="请输入名" bindinput="onFirstNameInput"/>
+      <input class="input-item" placeholder="请输入姓" bindinput="onLastNameInput" value="{{lastName}}"/>
+      <input class="input-item" placeholder="请输入名" bindinput="onFirstNameInput" value="{{firstName}}"/>
     </view>
     <button class="search-btn" disabled="{{!canSearch}}" bindtap="onSearch">查询</button>
   </view>
